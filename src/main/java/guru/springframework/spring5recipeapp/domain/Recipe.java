@@ -18,6 +18,9 @@ public class Recipe {
     private String url;
     private String directions;
 
+    @OneToOne
+    private UnitOfMeasure unitOfMeasure;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
     private Set<Ingredient> ingredients;
 
