@@ -9,7 +9,6 @@ import java.util.Set;
 @Data
 @Entity
 public class Recipe {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -43,8 +42,10 @@ public class Recipe {
     private Set<Category> categories = new HashSet<>();
 
     public void setNotes(Notes notes) {
-        this.notes = notes;
-        notes.setRecipe(this);
+        if (notes != null) {
+            this.notes = notes;
+            notes.setRecipe(this);
+        }
     }
 
     public Recipe addIngredient(Ingredient ingredient){
